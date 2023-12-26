@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4 text-center">
+  <h2 class="mb-4">Мои портфолио</h2>
+    
+    <ul class="list-group mt-3">
+      {% for portfolio in portfolios %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <a href="{% url 'transaction_list' portfolio.id %}">{{ portfolio.name }}</a>
+          <div class="btn-group" role="group">
+            <a href="{% url 'portfolio_edit' portfolio.id %}" class="btn btn-warning btn-sm">Редактировать</a>
+            <a href="{% url 'portfolio_delete' portfolio.id %}" class="btn btn-danger btn-sm">Удалить</a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <a href="{% url 'portfolio_create' %}" class="btn btn-success mt-3">Добавить Портфолио</a>
+  </div>
+{% endblock %}

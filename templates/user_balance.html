@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Welcome to the Home Page</h1>
+
+    <!-- Включаем отдельный раздел для отображения информации о счете пользователя -->
+    {% include 'user_balance.html' %}
+
+    <!-- Отображение общей суммы и истории платежей (пример) -->
+    <p>Total Sum: {{ total_sum }}</p>
+    <ul>
+        {% for payment in payment_history %}
+            <li>{{ payment.category__name }} - {{ payment.summa }} - {{ payment.payment_date }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Остальной код вашей страницы -->
+
+</body>
+</html>

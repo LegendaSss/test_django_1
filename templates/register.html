@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="text-center">Регистрация</h4>
+          </div>
+          <div class="card-body">
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="btn btn-primary btn-block mt-3">Зарегистрироваться</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="text-center">Вход через Google</h5>
+          </div>
+          <div class="card-body">
+            {% load socialaccount %}
+            <form method="post" action="{% provider_login_url 'google' %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-block">Войти с помощью Google</button>
+            </form>
+            {% providers_media_js %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

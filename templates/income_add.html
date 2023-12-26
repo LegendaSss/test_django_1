@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Add Income</h2>
+    <form method="post" enctype="multipart/form-data" class="income-form">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="form-group">
+            {{ form.category.label_tag }}
+            {{ form.category }}
+            {{ form.category.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.portfolio.label_tag }}
+            {{ form.portfolio }}
+            {{ form.portfolio.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.amount.label_tag }}
+            {{ form.amount }}
+            {{ form.amount.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.income_date.label_tag }}
+            {{ form.income_date }}
+            {{ form.income_date.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.currency.label_tag }}
+            {{ form.currency }}
+            {{ form.currency.errors }}
+        </div>
+        <button type="submit" class="btn btn-primary">Add Income</button>
+    </form>
+    <p><a href="{% url 'home' %}">Back to Home</a></p>
+{% endblock %}

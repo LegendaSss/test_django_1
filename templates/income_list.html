@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="content">
+  <div class="container-fluid">
+    <h2>Все ваши доходы</h2>
+    <div class="row">
+      {% for income in incomes %}
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h3>{{ income.amount }}{{ income.currency }}</h3>
+              <p>{{ income.category.name }}</p>
+              <p>{{ income.income_date|date:"Y-m-d" }}</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-arrow-up-c"></i>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

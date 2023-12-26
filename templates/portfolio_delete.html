@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Удалить профиль</h2>
+  <p>"{{ portfolio.name }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+  </form>
+  <a href="{% url 'portfolio_list' %}">Отмена</a>
+{% endblock %}
